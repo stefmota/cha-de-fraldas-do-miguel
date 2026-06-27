@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chá de Bebê - Eric & Ester</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+body{
+  margin:0;
+  font-family:'Quicksand', sans-serif;
+  background: linear-gradient(#bfe9ff,#ffffff);
+  color:#2b3a4a;
+  scroll-behavior:smooth;
+}
+
+/* NAV */
+nav{
+  position:sticky;
+  top:0;
+  background:white;
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  padding:10px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.05);
+  z-index:10;
+}
+
+nav a{
+  text-decoration:none;
+  background:#6fb6ff;
+  color:white;
+  padding:8px 12px;
+  border-radius:10px;
+  font-size:14px;
+  transition:.2s;
+}
+
+nav a:hover{
+  transform:scale(1.05);
+}
+
+/* HEADER */
+header{
+  text-align:center;
+  padding:70px 20px;
+  position:relative;
+}
+
+header h1{
+  font-family:'Great Vibes', cursive;
+  font-size:54px;
+  color:#3a6ea5;
+}
+
+header p{
+  color:#4a6f8f;
+}
+
+/* nuvens */
+.cloud{
+  position:absolute;
+  width:120px;
+  height:60px;
+  background:white;
+  border-radius:50px;
+  opacity:0.85;
+  animation: move 70s linear infinite;
+}
+
+@keyframes move{
+  from{transform:translateX(-200px);}
+  to{transform:translateX(120vw);}
+}
+
+/* balão */
+.balloon{
+  position:absolute;
+  top:120px;
+  left:50%;
+  transform:translateX(-50%);
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+  0%,100%{transform:translate(-50%,0);}
+  50%{transform:translate(-50%,-20px);}
+}
+
+/* SEÇÕES */
+section{
+  max-width:850px;
+  margin:30px auto;
+  background:white;
+  padding:20px;
+  border-radius:15px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.06);
+}
+
+h2{
+  text-align:center;
+  color:#3a6ea5;
+}
+
+/* cards */
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:15px;
+}
+
+.card{
+  background:#f7fbff;
+  border:1px solid #d9ecff;
+  border-radius:12px;
+  padding:15px;
+  text-align:center;
+  transition:.2s;
+}
+
+.card:hover{
+  transform:translateY(-5px);
+}
+
+/* botões */
+button{
+  background:#6fb6ff;
+  border:none;
+  padding:10px 15px;
+  border-radius:10px;
+  color:white;
+  cursor:pointer;
+  transition:.2s;
+}
+
+button:hover{
+  background:#4ea3ff;
+  transform:scale(1.05);
+}
+
+/* inputs */
+input{
+  width:100%;
+  padding:10px;
+  margin:5px 0;
+  border-radius:10px;
+  border:1px solid #cfe6ff;
+}
+
+/* contador */
+#countdown{
+  text-align:center;
+  font-size:22px;
+  margin-top:10px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#convite">Convite</a>
+  <a href="#data">Data</a>
+  <a href="#local">Local</a>
+  <a href="#presentes">Presentes</a>
+  <a href="#rsvp">Confirmação</a>
+  <a href="#mensagem">Mensagem</a>
+</nav>
+
+<!-- HEADER -->
+<header id="convite">
+
+<div class="cloud" style="top:40px;"></div>
+<div class="cloud" style="top:120px; animation-duration:90s;"></div>
+
+<div class="balloon">
+<svg width="80" height="110">
+  <ellipse cx="40" cy="40" rx="30" ry="40" fill="#7fc7ff"/>
+  <rect x="38" y="80" width="4" height="20" fill="#555"/>
+</svg>
+</div>
+
+<h1>Chá de Bebê 💙</h1>
+<p>Eric & Ester te convidam para esse momento especial</p>
+
+<div id="countdown"></div>
+</header>
+
+<script>
+const eventDate=new Date("2026-08-16T15:00:00").getTime();
+
+setInterval(()=>{
+let now=new Date().getTime();
+let d=eventDate-now;
+
+document.getElementById("countdown").innerHTML=
+`faltam ${Math.floor(d/86400000)}d ${Math.floor(d%86400000/3600000)}h ${Math.floor(d%3600000/60000)}m`;
+},1000);
+</script>
+
+<!-- DATA -->
+<section id="data">
+<h2>📅 Data</h2>
+<p style="text-align:center;">16 de Agosto às 15h</p>
+</section>
+
+<!-- LOCAL -->
+<section id="local">
+<h2>📍 Local</h2>
+<p style="text-align:center;">
+Espaço QR - Rua 25, Bairro Bela Vista, Nº 301
+</p>
+
+<iframe
+src="https://www.google.com/maps?q=Rua%2025%20Bela%20Vista%20301&output=embed"
+width="100%" height="250" style="border:none;border-radius:12px;">
+</iframe>
+
+<br><br>
+
+<div style="text-align:center;">
+<button onclick="window.open('https://www.google.com/maps')">
+como chegar
+</button>
+</div>
+</section>
+
+<!-- PRESENTES -->
+<section id="presentes">
+<h2>🎁 Presentes</h2>
+
+<div class="cards">
+  <div class="card">👨‍👩‍👦 Família<br>Fralda G + Lenço + Mimo</div>
+  <div class="card">💑 Casais<br>Fralda M + Lenço ou Mimo</div>
+  <div class="card">👤 Individuais<br>Fralda P ou M</div>
+</div>
+</section>
+
+<!-- RSVP -->
+<section id="rsvp">
+<h2>✅ Confirmação de presença</h2>
+
+<form id="form">
+  <input name="nome" placeholder="Seu nome" required>
+  <input name="qtd" placeholder="Quantidade de pessoas" required>
+  <button type="submit">Confirmar</button>
+</form>
+</section>
+
+<script>
+const url="COLE_SUA_URL_DO_GOOGLE_SHEETS";
+
+document.getElementById("form").addEventListener("submit",e=>{
+e.preventDefault();
+
+fetch(url,{
+method:"POST",
+body:new FormData(e.target)
+}).then(()=>alert("presença confirmada 💙"));
+});
+</script>
+
+<!-- MENSAGEM -->
+<section id="mensagem">
+<h2>💙 Mensagem dos Pais</h2>
+
+<p style="text-align:center; line-height:1.6;">
+“Deixem vir a mim as crianças e não as impeçam,
+pois o Reino de Deus pertence aos que são semelhantes a elas.”
+<br><br>
+<strong>Lucas 18:16</strong>
+</p>
+
+<p style="text-align:center;">
+Com amor,<br>
+<strong>Eric & Ester</strong> 💙
+</p>
+</section>
+
+</body>
+</html>
